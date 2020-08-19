@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package io.cinjug.microprofile.jaxrs.person.proto;
+option java_outer_classname = "Protobufs";
+
+message Person {
+    string id = 1;
+    string firstName = 2;
+    string lastName = 3;
+}

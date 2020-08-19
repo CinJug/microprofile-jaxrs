@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Getting server updates</h1>
+<ul id="result"></ul>
+
+<script>
+    if(typeof(EventSource) !== "undefined") {
+        var source = new EventSource("/api/persons/events");
+        source.addEventListener("person", function(event) {
+            const newElement = document.createElement("li");
+            const eventList = document.getElementById("result");
+            newElement.innerHTML = "message: " + event.data;
+            eventList.appendChild(newElement);
+        });
+
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+    }
+</script>
+
+</body>
+</html>
